@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story | Birthday Edition</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --glass: rgba(255, 255, 255, 0.2);
+            --accent: #ff4d6d;
+            --bg-gradient: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
+            --text-dark: #590d22;
+        }
+
+        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 50px;
+            display: flex;
+            gap: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        nav a.active {
+            color: var(--accent);
+            transform: translateY(-10px);
+        }
+
+        /* Sections Logic */
+        section {
+            display: none;
+            min-height: 100vh;
+            padding: 60px 20px 120px;
+            animation: fadeIn 0.6s ease;
+        }
+
+        section.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container { max-width: 900px; margin: 0 auto; }
+
+        /* Content Styling */
+        h1 { font-family: 'Dancing Script', cursive; font-size: 4rem; margin: 0; }
+        
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        /* Timeline Page */
+        .timeline {
+            border-left: 3px solid var(--accent);
+            margin: 20px auto;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .timeline-item { margin-bottom: 40px; position: relative; }
+        .timeline-item::before {
+            content: '❤';
+            position: absolute;
+            left: -42px;
+            background: white;
+            color: var(--accent);
+            border-radius: 50%;
+            padding: 5px;
+        }
+
+        /* Vault/Letters Page */
+        .vault-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .letter-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .letter-card:hover { transform: rotate(-3deg); }
+
+        /* Bucket List */
+        .list-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+
+        input[type="checkbox"] { accent-color: var(--accent); width: 20px; height: 20px; }
+
+        /* Entrance Overlay */
+        #overlay {
+            position: fixed;
+            inset: 0;
+            background: white;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .btn-enter {
+            padding: 15px 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Entrance Screen -->
+    <div id="overlay">
+        <h1 style="color: var(--accent); margin-bottom: 20px;">For Your Eyes Only</h1>
+        <button class="btn-enter" onclick="enterSite()">Open Your Heart ❤️🔑</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" onclick="showPage('home')" class="active" id="nav-home"><i class="fa fa-home"></i></a>
+        <a href="#" onclick="showPage('timeline')" id="nav-timeline"><i class="fa fa-history"></i></a>
+        <a href="#" onclick="showPage('vault')" id="nav-vault"><i class="fa fa-envelope-open-text"></i></a>
+        <a href="#" onclick="showPage('future')" id="nav-future"><i class="fa fa-list-check"></i></a>
+    </nav>
+
+    <div class="container">
+        <!-- PAGE 1: HOME -->
+        <section id="home" class="active">
+            <div style="text-align: center; margin-top: 50px;">
+                <h1>Happy Birthday, Muskan Jiii❤️</h1>
+                <p>Welcome to a website built entirely for you madamjii.</p>
+                <div class="glass-card">
+                    <img src="muskan.jpg" alt="Your Love" style="width: 50%; border-radius: 15px; margin-bottom: 20px;">
+                    <p style="font-size: 1.2rem; font-style: italic;">"You are my favorite thought❤️"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2: TIMELINE -->
+        <section id="timeline">
+            <h1>Our Story</h1>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>The Day I saw you first time</h3>
+                    <p>It was on snapchat I saw you first time and then thought if she could be my wife I'll be luckiest person.....then I saw you on school in simple dress which was most attractive for me and you are looking more prettier🫠❤️</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>The First Date</h3>
+                    <p>Remember that we went to coffee shop for first time👀 I was veryyy happyy on that day......holding my future wife's hand ❤️🫠</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Your's❤️</h3>
+                    <p> You are the most beautiful part of my life pochaa jii❤️, and I feel lucky to have you every day.💕 No matter how busy my day gets, you are always on my mind.🥰 Your smile makes my heart happy and brightens even my hardest days.🌹 Thank you my dear wife for being my happiness, my comfort, and my favorite person.💖 I love you more than words can express, and I cherish every moment with you🙈❤️</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: LOVE VAULT -->
+        <section id="vault">
+            <h1>The Love Vault</h1>
+            <p>Open these when you need a reminder...</p>
+            <div class="vault-grid">
+                <div class="letter-card" onclick="alert('Letter: My love, no matter how sad or difficult things feel right now, please remember that you are never alone—I am always here for you, believing in you, caring for you, and loving you with all my heart.')">
+                    <h3>Open When...<br>You're Sad</h3>
+                </div>
+                <div class="letter-card" onclick="alert('Letter: My love, whenever life feels overwhelming, remember that I am always here beside you, believing in you and loving you through every challenge.')">
+                    <h3>Open When...<br>You're Stressed</h3>
+                </div>
+                <div class="letter-card" onclick="alert('Letter:Hey love, do not stress too much—if overthinking were a paid job, you had already be richer than Elon Musk and still be worrying about whether your bank balance is okay.')">
+                    <h3>Open When...<br>You Need a Laugh</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 4: FUTURE BUCKET LIST -->
+        <section id="future">
+            <h1>Our Future</h1>
+            <div class="glass-card">
+                <h3>The "Someday" List</h3>
+                <div class="list-item"><input type="checkbox"> Marry you</div>
+                <div class="list-item"><input type="checkbox"> Travel to Disney land</div>
+                <div class="list-item"><input type="checkbox"> Make a baby girl </div>
+                <div class="list-item"><input type="checkbox"> Make you the happiest person alive</div>
+		<div class="list-item"><input type="checkbox"> Cook a meal together(and probably burn it together)</div>
+		<div class="list-item"><input type="checkbox"> Dance together in rain</div>
+		<div class="list-item"><input type="checkbox"> Grow old together and still teasing each other</div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Entrance Script
+        function enterSite() {
+            document.getElementById('overlay').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('overlay').style.display = 'none';
+            }, 500);
+        }
+
+        // Navigation Script
+        function showPage(pageId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update Nav Icons
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            document.getElementById('nav-' + pageId).classList.add('active');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
